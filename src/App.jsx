@@ -3,11 +3,23 @@ import { useState, useEffect, useRef } from "react";
 const NAV_LINKS = ["About", "Works", "Listen", "Contact"];
 
 const WORKS = [
-  { title: "Elegy for Strings", year: 2024, instrumentation: "String Orchestra", duration: "8'", description: "A contemplative work exploring grief and remembrance through sustained string textures and slowly evolving harmonies." },
-  { title: "Fractures", year: 2024, instrumentation: "Piano Trio", duration: "12'", description: "Three movements examining structural tension — moments of fragility giving way to moments of resolution." },
-  { title: "Nocturne No. 2", year: 2023, instrumentation: "Solo Piano", duration: "5'", description: "A lyrical night piece drawing on Romantic tradition while pushing into post-tonal harmonic territory." },
-  { title: "Watershed", year: 2023, instrumentation: "Wind Quintet", duration: "9'", description: "Inspired by the rivers of the Pacific Northwest, this quintet layers flowing lines into a cascading whole." },
-  { title: "Cantus", year: 2022, instrumentation: "SATB Choir", duration: "6'", description: "A choral work setting an original text about memory, written for the Lawrence University Concert Choir." },
+  { title: "Memories of a Quiet Bird", year: 2026, instrumentation: "Baritone voice and 6-string guitar", duration: "6'15\"" },
+  { title: "Avarice of the Mind", year: 2025, instrumentation: "Solo piano", duration: "8'30\"" },
+  { title: "Buzzing, Dying World", year: 2025, instrumentation: "String quartet (2 violins, viola, cello)", duration: "5'15\"" },
+  { title: "House Fear", year: 2025, instrumentation: "Soprano voice and piano", duration: "1'30\"" },
+  { title: "Ice Crystals", year: 2025, instrumentation: "Electronics", duration: "1'" },
+  { title: "Where in Time?", year: 2025, instrumentation: "Solo piano", duration: "1'" },
+  { title: "Skip a Beat, Trip a Beat", year: 2025, instrumentation: "Solo flute", duration: "1'30\"" },
+  { title: "Larry's Wildflower Mountain", year: 2024, instrumentation: "Reed quintet (clarinet, oboe, tenor saxophone, bass clarinet, bassoon)", duration: "6'15\"" },
+  { title: "Is this High Art?", year: 2024, instrumentation: "Electronics", duration: "4'" },
+  { title: "Crumpled Up Pocky Box", year: 2023, instrumentation: "Violin, french horn, and bassoon", duration: "9'20\"" },
+  { title: "Broken Dove", year: 2023, instrumentation: "Chamber orchestra (flute, oboe, clarinet, bassoon, chamber strings) and solo viola", duration: "3'20\"" },
+  { title: "(Not) Alone (At All)", year: 2023, instrumentation: "Flute, viola, and harp", duration: "3'" },
+  { title: "Anti-Langsam", year: 2023, instrumentation: "Brass quartet (tenor trombone, bass trombone, two french horns)", duration: "2'50\"" },
+  { title: "I Lost My Luggage", year: 2023, instrumentation: "B-flat clarinet and piano", duration: "2'" },
+  { title: "Beautiful Trees Under Heavy Clouds", year: 2023, instrumentation: "Brass quintet (two trumpets, french horn, trombone, tuba)", duration: "3'" },
+  { title: "Present, Past, and Synthesis", year: 2023, instrumentation: "String quartet", duration: "Mvt I 2'40\" · Mvt II 5'20\"" },
+  { title: "Dirge", year: 2023, instrumentation: "Saxophone, cello, and marimba", duration: "5'20\"" },
 ];
 
 const TRACKS = [
@@ -232,9 +244,9 @@ function Works() {
               onMouseEnter={() => setHovered(i)}
               onMouseLeave={() => setHovered(null)}
               style={{
-                padding: "2rem 0",
+                padding: "1.6rem 0",
                 borderTop: "1px solid rgba(100,160,210,0.12)",
-                display: "grid", gridTemplateColumns: "1fr 2fr 1fr",
+                display: "grid", gridTemplateColumns: "2fr 1fr",
                 gap: "2rem", alignItems: "start",
                 transition: "background 0.2s",
                 cursor: "default",
@@ -242,13 +254,10 @@ function Works() {
             >
               <div>
                 <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.35rem", fontWeight: 500, color: hovered === i ? "#7ab3d4" : "#ddeef8", margin: "0 0 6px", transition: "color 0.2s" }}>{work.title}</p>
-                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.78rem", color: "rgba(150,190,215,0.6)", margin: 0 }}>{work.year}</p>
+                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.82rem", color: "rgba(180,210,230,0.6)", margin: 0, opacity: hovered === i ? 1 : 0.75, transition: "opacity 0.2s" }}>{work.instrumentation}</p>
               </div>
-              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.9rem", color: "rgba(180,210,230,0.6)", lineHeight: 1.7, margin: 0, opacity: hovered === i ? 1 : 0.7, transition: "opacity 0.2s" }}>
-                {work.description}
-              </p>
               <div style={{ textAlign: "right" }}>
-                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.78rem", color: "rgba(150,190,215,0.7)", margin: "0 0 4px" }}>{work.instrumentation}</p>
+                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.78rem", color: "rgba(150,190,215,0.7)", margin: "0 0 4px" }}>{work.year}</p>
                 <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", color: "rgba(120,170,200,0.5)", margin: 0 }}>{work.duration}</p>
               </div>
             </div>
