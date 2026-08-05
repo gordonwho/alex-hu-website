@@ -337,9 +337,12 @@ function Contact() {
       <div style={{ maxWidth: "600px", margin: "0 auto" }}>
         <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#7ab3d4", marginBottom: "1.2rem" }}>Get in Touch</p>
         <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "3rem", fontWeight: 400, color: "#ddeef8", lineHeight: 1.1, margin: "0 0 1.5rem" }}>Contact</h2>
-        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "1rem", color: "rgba(180,210,230,0.65)", lineHeight: 1.7, marginBottom: "3rem" }}>
+        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "1rem", color: "rgba(180,210,230,0.65)", lineHeight: 1.7, marginBottom: "1.5rem" }}>
           For performance inquiries, score requests, or just to say hello — Alexander would love to hear from you.
         </p>
+        <a href="mailto:alexhucomposer@gmail.com" style={{ display: "inline-block", fontFamily: "'DM Sans', sans-serif", fontSize: "1rem", color: "#7ab3d4", textDecoration: "none", marginBottom: "3rem", borderBottom: "1px solid rgba(122,179,212,0.4)", paddingBottom: "2px" }}>
+          alexhucomposer@gmail.com
+        </a>
         {sent ? (
           <div style={{ padding: "2rem", border: "1px solid rgba(100,160,210,0.3)", textAlign: "center" }}>
             <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.4rem", color: "#7ab3d4", margin: 0 }}>Message sent — thank you.</p>
