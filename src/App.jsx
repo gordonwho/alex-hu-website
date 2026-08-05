@@ -162,10 +162,7 @@ function Hero({ onNav }) {
         }}>
           Hu
         </h1>
-        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "1.05rem", color: "rgba(190,220,240,0.7)", maxWidth: "440px", lineHeight: 1.7, marginBottom: "2.5rem" }}>
-          Writing music that lives in the space between structure and feeling — for orchestras, chamber ensembles, and voices.
-        </p>
-        <div style={{ display: "flex", gap: "1rem" }}>
+        <div style={{ display: "flex", gap: "1rem", marginTop: "0.5rem" }}>
           <button onClick={() => onNav("works")} style={{
             fontFamily: "'DM Sans', sans-serif", fontSize: "0.82rem", letterSpacing: "0.12em", textTransform: "uppercase",
             padding: "14px 32px", border: "1px solid #7ab3d4", background: "transparent",
@@ -194,9 +191,6 @@ function About() {
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: "6rem", alignItems: "start" }}>
         <div>
           <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#7ab3d4", marginBottom: "1.2rem" }}>About</p>
-          <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "3rem", fontWeight: 400, color: "#ddeef8", lineHeight: 1.1, margin: "0 0 2rem" }}>
-            Crafting sound with intention
-          </h2>
           {/* Decorative staff fragment */}
           <div style={{ position: "relative", height: "60px", margin: "2rem 0" }}>
             <svg viewBox="0 0 200 60" style={{ width: "100%", opacity: 0.2 }}>
@@ -212,10 +206,10 @@ function About() {
         </div>
         <div>
           <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "1.05rem", color: "rgba(190,220,240,0.75)", lineHeight: 1.85, marginBottom: "1.5rem" }}>
-            Alexander Hu is a composer and pianist currently completing his undergraduate degree in Music Composition at Lawrence University in Appleton, Wisconsin. His work spans orchestral writing, chamber music, and choral composition.
+            Alex Hu is a composer from Marietta, Georgia, a little ways outside Atlanta. He started playing violin in 2016, and started composing in 2021, after the Covid pandemic somehow led him to appreciate music enough to write some himself.
           </p>
           <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "1.05rem", color: "rgba(190,220,240,0.75)", lineHeight: 1.85, marginBottom: "2rem" }}>
-            Drawn to the interplay between formal structure and expressive freedom, Alexander writes music that is rooted in the Western classical tradition while remaining open to contemporary harmonic and textural ideas. His pieces have been performed by the Lawrence Symphony Orchestra, the Lawrence University Concert Choir, and various chamber ensembles on campus.
+            He is inspired by a wide range of work, from the string quartets of Shostakovich to the symphonies of Beethoven, from modern day Stacy Garrop and Franghiz Ali-Zadeh to many of his friends. His wish is merely to continue writing and perfecting his music for others to play and listen to.
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem" }}>
             {[["University", "Lawrence University"], ["Major", "Music Composition"], ["Year", "Junior · Class of 2026"], ["Focus", "Orchestral & Chamber"]].map(([label, val]) => (
