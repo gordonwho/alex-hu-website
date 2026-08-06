@@ -206,10 +206,13 @@ function About() {
         </div>
         <div>
           <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "1.05rem", color: "rgba(190,220,240,0.75)", lineHeight: 1.85, marginBottom: "1.5rem" }}>
-            Alex Hu is a composer from Marietta, Georgia, a little ways outside Atlanta. He started playing violin in 2016, and started composing in 2021, after the Covid pandemic somehow led him to appreciate music enough to write some himself.
+            Alex Hu is a composer who enjoys writing music that focuses on blending many styles and techniques together to form complete, coherent narratives. Such narratives may at times be a reflection of the physical world as we know it, or may also at times focus inward, on the introspective emotional world of the self. He may also simply write for the fun of it as well, as any inspiration may prove to be good inspiration in his eyes.
+          </p>
+          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "1.05rem", color: "rgba(190,220,240,0.75)", lineHeight: 1.85, marginBottom: "1.5rem" }}>
+            Alex Hu was raised in Marietta, Georgia, a little ways outside Atlanta. He started playing violin in 2016, and started composing in 2021, after the Covid pandemic somehow led him to appreciate music enough to write some himself. He is inspired by a wide range of work, from the string quartets of Shostakovich to the symphonies of Beethoven, from modern day Stacy Garrop, Franghiz Ali-Zadeh, and Joe Hisaishi to many of his friends. All of these myriad influences all help to inform his aforementioned attempts to blend styles, as a mirror of sorts of the many who inspire him.
           </p>
           <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "1.05rem", color: "rgba(190,220,240,0.75)", lineHeight: 1.85, marginBottom: "2rem" }}>
-            He is inspired by a wide range of work, from the string quartets of Shostakovich to the symphonies of Beethoven, from modern day Stacy Garrop and Franghiz Ali-Zadeh to many of his friends. His wish is merely to continue writing and perfecting his music for others to play and listen to.
+            Alex Hu attended Interlochen's Arts Camp for music composition in 2023 and is currently studying at Lawrence University for a BM in music composition. He has studied under a myriad of composers, including Alex Tedrow, Yi-De Chen, Jennifer Jolley, Joanne Metcalf, and Asha Srinivasan. He won first prize in the WAC composition competition, college division, and was played at Denison's 2024 TUTTI festival.
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem" }}>
             {[["University", "Lawrence University"], ["Major", "Music Composition"], ["Year", "Junior · Class of 2026"], ["Focus", "Orchestral & Chamber"]].map(([label, val]) => (
