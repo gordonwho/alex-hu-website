@@ -6,20 +6,14 @@ const WORKS = [
   { title: "Memories of a Quiet Bird", year: 2026, instrumentation: "Baritone voice and 6-string guitar", duration: "6'15\"" },
   { title: "Avarice of the Mind", year: 2025, instrumentation: "Solo piano", duration: "8'30\"" },
   { title: "Buzzing, Dying World", year: 2025, instrumentation: "String quartet (2 violins, viola, cello)", duration: "5'15\"" },
-  { title: "House Fear", year: 2025, instrumentation: "Soprano voice and piano", duration: "1'30\"" },
-  { title: "Ice Crystals", year: 2025, instrumentation: "Electronics", duration: "1'" },
-  { title: "Where in Time?", year: 2025, instrumentation: "Solo piano", duration: "1'" },
-  { title: "Skip a Beat, Trip a Beat", year: 2025, instrumentation: "Solo flute", duration: "1'30\"" },
-  { title: "Larry's Wildflower Mountain", year: 2024, instrumentation: "Reed quintet (clarinet, oboe, tenor saxophone, bass clarinet, bassoon)", duration: "6'15\"" },
+  { title: "Larry's Wildflower Mountain", year: 2024, instrumentation: "Reed quintet (B-flat clarinet, oboe, tenor saxophone, bass clarinet, bassoon)", duration: "6'15\"" },
   { title: "Is this High Art?", year: 2024, instrumentation: "Electronics", duration: "4'" },
   { title: "Crumpled Up Pocky Box", year: 2023, instrumentation: "Violin, french horn, and bassoon", duration: "9'20\"" },
-  { title: "Broken Dove", year: 2023, instrumentation: "Chamber orchestra (flute, oboe, clarinet, bassoon, chamber strings) and solo viola", duration: "3'20\"" },
+  { title: "Broken Dove", year: 2023, instrumentation: "Chamber orchestra (flute, oboe, B-flat clarinet, bassoon, chamber strings) and solo viola", duration: "3'20\"" },
   { title: "(Not) Alone (At All)", year: 2023, instrumentation: "Flute, viola, and harp", duration: "3'" },
-  { title: "Anti-Langsam", year: 2023, instrumentation: "Brass quartet (tenor trombone, bass trombone, two french horns)", duration: "2'50\"" },
   { title: "I Lost My Luggage", year: 2023, instrumentation: "B-flat clarinet and piano", duration: "2'" },
   { title: "Beautiful Trees Under Heavy Clouds", year: 2023, instrumentation: "Brass quintet (two trumpets, french horn, trombone, tuba)", duration: "3'" },
-  { title: "Present, Past, and Synthesis", year: 2023, instrumentation: "String quartet", duration: "Mvt I 2'40\" · Mvt II 5'20\"" },
-  { title: "Dirge", year: 2023, instrumentation: "Saxophone, cello, and marimba", duration: "5'20\"" },
+  { title: "Dirge", year: 2023, instrumentation: "Alto saxophone, cello, and marimba", duration: "5'20\"" },
 ];
 
 const TRACKS = [
