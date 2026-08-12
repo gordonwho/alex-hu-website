@@ -22,41 +22,6 @@ const TRACKS = [
   { title: "Cantus", ensemble: "Lawrence University Concert Choir", year: 2022, duration: "6:31" },
 ];
 
-function StaffLines() {
-  return (
-    <svg viewBox="0 0 900 120" preserveAspectRatio="none" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", opacity: 0.07 }}>
-      {[20, 36, 52, 68, 84].map((y, i) => (
-        <line key={i} x1="0" y1={y} x2="900" y2={y} stroke="#93b8d4" strokeWidth="1" />
-      ))}
-      {/* Decorative notes */}
-      {[80, 200, 340, 500, 650, 780].map((x, i) => (
-        <g key={i} transform={`translate(${x}, ${[36, 52, 20, 68, 36, 52][i]})`}>
-          <ellipse cx="0" cy="0" rx="7" ry="5" fill="#93b8d4" transform="rotate(-20)" />
-          <line x1="7" y1="-2" x2="7" y2="-30" stroke="#93b8d4" strokeWidth="1.5" />
-        </g>
-      ))}
-    </svg>
-  );
-}
-
-function WaveformIllustration() {
-  const points = [];
-  const W = 800, H = 200;
-  for (let x = 0; x <= W; x += 2) {
-    const y = H / 2
-      + Math.sin(x * 0.025) * 40
-      + Math.sin(x * 0.07 + 1) * 20
-      + Math.sin(x * 0.012 + 2) * 30;
-    points.push(`${x},${y}`);
-  }
-  return (
-    <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" style={{ width: "100%", height: "100%", opacity: 0.18 }}>
-      <polyline points={points.join(" ")} fill="none" stroke="#7ab3d4" strokeWidth="1.5" />
-      <polyline points={points.map(p => { const [x, y] = p.split(","); return `${x},${H / 2 + (y - H / 2) * 0.5}`; }).join(" ")} fill="none" stroke="#93c5e0" strokeWidth="1" />
-    </svg>
-  );
-}
-
 function Nav({ active, onNav }) {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
@@ -103,12 +68,12 @@ function Hero({ onNav }) {
       position: "relative", overflow: "hidden",
       padding: "0 3rem",
     }}>
-      {/* Violin background image — place your downloaded file at /public/images/violin-bg.jpg */}
+      {/* Bridge at dusk background image */}
       <div style={{
         position: "absolute", inset: 0,
-        backgroundImage: "url('/images/kalhh-violin-1252019_1280.jpg')",
+        backgroundImage: "url('/images/hero-bridge-dusk.jpg')",
         backgroundSize: "cover",
-        backgroundPosition: "center right",
+        backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }} />
       {/* Gradient overlay: opaque on left for text legibility, fades right to reveal image */}
@@ -121,18 +86,9 @@ function Hero({ onNav }) {
         position: "absolute", bottom: 0, left: 0, right: 0, height: "180px",
         background: "linear-gradient(to bottom, transparent, #0a121e)",
       }} />
-      {/* Staff lines in hero */}
-      <div style={{ position: "absolute", bottom: "12%", left: 0, right: 0, height: "120px" }}>
-        <StaffLines />
-      </div>
-      {/* Waveform */}
-      <div style={{ position: "absolute", top: "60%", left: 0, right: 0, height: "200px", transform: "translateY(-50%)" }}>
-        <WaveformIllustration />
-      </div>
-
       <div style={{ position: "relative", zIndex: 2, maxWidth: "700px" }}>
         <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#7ab3d4", marginBottom: "1.5rem", opacity: 0.9 }}>
-          Composer · Lawrence University · Class of 2026
+          Composer · Lawrence University · Class of 2027
         </p>
         <h1 style={{
           fontFamily: "'Cormorant Garamond', serif",
@@ -181,22 +137,22 @@ function Hero({ onNav }) {
 
 function About() {
   return (
-    <section id="about" style={{ padding: "8rem 3rem", maxWidth: "1100px", margin: "0 auto" }}>
+    <section id="about" style={{ position: "relative", overflow: "hidden", padding: "8rem 3rem" }}>
+      <div style={{
+        position: "absolute", inset: 0,
+        backgroundImage: "url('/images/about-river-sunset.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }} />
+      <div style={{
+        position: "absolute", inset: 0,
+        background: "linear-gradient(180deg, rgba(10,18,30,0.94) 0%, rgba(10,18,30,0.88) 40%, rgba(10,18,30,0.94) 100%)",
+      }} />
+      <div style={{ position: "relative", zIndex: 2, maxWidth: "1100px", margin: "0 auto" }}>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: "6rem", alignItems: "start" }}>
         <div>
           <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#7ab3d4", marginBottom: "1.2rem" }}>About</p>
-          {/* Decorative staff fragment */}
-          <div style={{ position: "relative", height: "60px", margin: "2rem 0" }}>
-            <svg viewBox="0 0 200 60" style={{ width: "100%", opacity: 0.2 }}>
-              {[10, 22, 34, 46, 58].map((y, i) => <line key={i} x1="0" y1={y} x2="200" y2={y} stroke="#7ab3d4" strokeWidth="1" />)}
-              <ellipse cx="30" cy="22" rx="7" ry="5" fill="#7ab3d4" transform="rotate(-15,30,22)" />
-              <line x1="36" y1="20" x2="36" y2="-4" stroke="#7ab3d4" strokeWidth="1.5" />
-              <ellipse cx="70" cy="34" rx="7" ry="5" fill="#7ab3d4" transform="rotate(-15,70,34)" />
-              <line x1="76" y1="32" x2="76" y2="8" stroke="#7ab3d4" strokeWidth="1.5" />
-              <ellipse cx="110" cy="10" rx="7" ry="5" fill="#7ab3d4" transform="rotate(-15,110,10)" />
-              <line x1="116" y1="8" x2="116" y2="-16" stroke="#7ab3d4" strokeWidth="1.5" />
-            </svg>
-          </div>
         </div>
         <div>
           <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "1.05rem", color: "rgba(190,220,240,0.75)", lineHeight: 1.85, marginBottom: "1.5rem" }}>
@@ -209,7 +165,7 @@ function About() {
             Alex Hu attended Interlochen's Arts Camp for music composition in 2023 and is currently studying at Lawrence University for a BM in music composition. He has studied under a myriad of composers, including Alex Tedrow, Yi-De Chen, Jennifer Jolley, Joanne Metcalf, and Asha Srinivasan. He won first prize in the WAC composition competition, college division, and was played at Denison's 2024 TUTTI festival.
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem" }}>
-            {[["University", "Lawrence University"], ["Major", "Music Composition"], ["Year", "Junior · Class of 2026"], ["Focus", "Orchestral & Chamber"]].map(([label, val]) => (
+            {[["University", "Lawrence University"], ["Major", "Music Composition"], ["Year", "Junior · Class of 2027"], ["Focus", "Orchestral & Chamber"]].map(([label, val]) => (
               <div key={label}>
                 <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#7ab3d4", margin: "0 0 4px" }}>{label}</p>
                 <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.92rem", color: "rgba(200,225,240,0.85)", margin: 0 }}>{val}</p>
@@ -218,6 +174,7 @@ function About() {
           </div>
         </div>
       </div>
+      </div>
     </section>
   );
 }
@@ -225,8 +182,19 @@ function About() {
 function Works() {
   const [hovered, setHovered] = useState(null);
   return (
-    <section id="works" style={{ padding: "6rem 3rem", background: "rgba(100,160,210,0.03)", borderTop: "1px solid rgba(100,160,210,0.08)", borderBottom: "1px solid rgba(100,160,210,0.08)" }}>
-      <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+    <section id="works" style={{ position: "relative", overflow: "hidden", padding: "6rem 3rem", borderTop: "1px solid rgba(100,160,210,0.08)", borderBottom: "1px solid rgba(100,160,210,0.08)" }}>
+      <div style={{
+        position: "absolute", inset: 0,
+        backgroundImage: "url('/images/works-flooded-lake.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }} />
+      <div style={{
+        position: "absolute", inset: 0,
+        background: "linear-gradient(180deg, rgba(10,18,30,0.95) 0%, rgba(10,18,30,0.9) 50%, rgba(10,18,30,0.95) 100%)",
+      }} />
+      <div style={{ position: "relative", zIndex: 2, maxWidth: "1100px", margin: "0 auto" }}>
         <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#7ab3d4", marginBottom: "1.2rem" }}>Portfolio</p>
         <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "3rem", fontWeight: 400, color: "#ddeef8", lineHeight: 1.1, margin: "0 0 4rem" }}>Selected Works</h2>
         <div>
@@ -330,8 +298,19 @@ function Listen() {
 function Contact() {
   const [sent, setSent] = useState(false);
   return (
-    <section id="contact" style={{ padding: "6rem 3rem", background: "rgba(100,160,210,0.03)", borderTop: "1px solid rgba(100,160,210,0.08)" }}>
-      <div style={{ maxWidth: "600px", margin: "0 auto" }}>
+    <section id="contact" style={{ position: "relative", overflow: "hidden", padding: "6rem 3rem", borderTop: "1px solid rgba(100,160,210,0.08)" }}>
+      <div style={{
+        position: "absolute", inset: 0,
+        backgroundImage: "url('/images/contact-frozen-trees.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }} />
+      <div style={{
+        position: "absolute", inset: 0,
+        background: "linear-gradient(180deg, rgba(10,18,30,0.95) 0%, rgba(10,18,30,0.88) 50%, rgba(10,18,30,0.95) 100%)",
+      }} />
+      <div style={{ position: "relative", zIndex: 2, maxWidth: "600px", margin: "0 auto" }}>
         <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#7ab3d4", marginBottom: "1.2rem" }}>Get in Touch</p>
         <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "3rem", fontWeight: 400, color: "#ddeef8", lineHeight: 1.1, margin: "0 0 1.5rem" }}>Contact</h2>
         <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "1rem", color: "rgba(180,210,230,0.65)", lineHeight: 1.7, marginBottom: "1.5rem" }}>
