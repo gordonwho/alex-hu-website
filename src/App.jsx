@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 const NAV_LINKS = ["About", "Works", "Listen", "Contact"];
 
@@ -17,9 +17,10 @@ const WORKS = [
 ];
 
 const TRACKS = [
-  { title: "Elegy for Strings", ensemble: "Lawrence Symphony Orchestra", year: 2024, duration: "8:14" },
-  { title: "Nocturne No. 2", ensemble: "Student Recital Recording", year: 2023, duration: "5:02" },
-  { title: "Cantus", ensemble: "Lawrence University Concert Choir", year: 2022, duration: "6:31" },
+  { title: "Dirge", url: "https://soundcloud.com/alex-hu-39673826/dirge" },
+  { title: "Is this High Art?", url: "https://soundcloud.com/alex-hu-39673826/is-this-high-art" },
+  { title: "Crumpled Up Pocky Box", url: "https://soundcloud.com/alex-hu-39673826/crumpled-up-pocky-box" },
+  { title: "Larry's Wildflower Mountain", url: "https://soundcloud.com/alex-hu-39673826/img_5826" },
 ];
 
 function Nav({ active, onNav }) {
@@ -229,67 +230,32 @@ function Works() {
 }
 
 function Listen() {
-  const [playing, setPlaying] = useState(null);
-  const [progress, setProgress] = useState({});
-  const intervals = useRef({});
-
-  const togglePlay = (i) => {
-    if (playing === i) {
-      setPlaying(null);
-      clearInterval(intervals.current[i]);
-    } else {
-      if (playing !== null) clearInterval(intervals.current[playing]);
-      setPlaying(i);
-      setProgress(p => ({ ...p, [i]: p[i] || 0 }));
-      intervals.current[i] = setInterval(() => {
-        setProgress(p => ({ ...p, [i]: Math.min((p[i] || 0) + 0.5, 100) }));
-      }, 300);
-    }
-  };
-
   return (
     <section id="listen" style={{ padding: "6rem 3rem" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
         <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#7ab3d4", marginBottom: "1.2rem" }}>Audio</p>
         <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "3rem", fontWeight: 400, color: "#ddeef8", lineHeight: 1.1, margin: "0 0 3rem" }}>Listen</h2>
-        <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
-          {TRACKS.map((track, i) => (
+        <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+          {TRACKS.map((track) => (
             <div key={track.title} style={{
-              display: "grid", gridTemplateColumns: "48px 1fr auto",
-              gap: "1.5rem", alignItems: "center",
               padding: "1.4rem 1.5rem",
-              background: playing === i ? "rgba(100,160,210,0.07)" : "transparent",
-              border: "1px solid",
-              borderColor: playing === i ? "rgba(100,160,210,0.2)" : "rgba(100,160,210,0.08)",
-              marginBottom: "8px",
-              transition: "all 0.2s",
+              border: "1px solid rgba(100,160,210,0.12)",
+              background: "rgba(100,160,210,0.03)",
             }}>
-              <button onClick={() => togglePlay(i)} style={{
-                width: "40px", height: "40px", borderRadius: "50%",
-                border: "1px solid rgba(100,160,210,0.4)",
-                background: playing === i ? "#7ab3d4" : "transparent",
-                cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
-                transition: "all 0.2s", flexShrink: 0,
-              }}>
-                {playing === i
-                  ? <span style={{ display: "flex", gap: "3px" }}><span style={{ width: "3px", height: "14px", background: "#0a121e", borderRadius: "1px" }} /><span style={{ width: "3px", height: "14px", background: "#0a121e", borderRadius: "1px" }} /></span>
-                  : <span style={{ width: 0, height: 0, borderTop: "7px solid transparent", borderBottom: "7px solid transparent", borderLeft: "12px solid #7ab3d4", marginLeft: "3px" }} />
-                }
-              </button>
-              <div>
-                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.15rem", fontWeight: 500, color: "#ddeef8", margin: "0 0 4px" }}>{track.title}</p>
-                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.78rem", color: "rgba(150,190,215,0.6)", margin: "0 0 10px" }}>{track.ensemble} · {track.year}</p>
-                <div style={{ height: "2px", background: "rgba(100,160,210,0.12)", borderRadius: "1px", position: "relative" }}>
-                  <div style={{ position: "absolute", left: 0, top: 0, height: "100%", width: `${progress[i] || 0}%`, background: "#7ab3d4", borderRadius: "1px", transition: "width 0.3s linear" }} />
-                </div>
-              </div>
-              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.8rem", color: "rgba(150,190,215,0.5)", margin: 0 }}>{track.duration}</p>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.15rem", fontWeight: 500, color: "#ddeef8", margin: "0 0 12px" }}>{track.title}</p>
+              <iframe
+                title={track.title}
+                width="100%"
+                height="100"
+                scrolling="no"
+                frameBorder="no"
+                allow="autoplay"
+                style={{ display: "block" }}
+                src={`https://w.soundcloud.com/player/?url=${encodeURIComponent(track.url)}&color=%237ab3d4&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false`}
+              />
             </div>
           ))}
         </div>
-        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.8rem", color: "rgba(120,160,190,0.4)", marginTop: "1.5rem" }}>
-          Audio players are placeholders — connect to SoundCloud, Spotify, or hosted files.
-        </p>
       </div>
     </section>
   );
