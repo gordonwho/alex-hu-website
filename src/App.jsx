@@ -154,6 +154,13 @@ function About() {
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: "6rem", alignItems: "start" }}>
         <div>
           <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#7ab3d4", marginBottom: "1.2rem" }}>About</p>
+          <div style={{ border: "1px solid rgba(122,179,212,0.25)", padding: "8px", background: "rgba(10,18,30,0.4)" }}>
+            <img
+              src="/images/alex-hu-portrait.jpg"
+              alt="Alexander Hu"
+              style={{ display: "block", width: "100%", height: "auto" }}
+            />
+          </div>
         </div>
         <div>
           <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "1.05rem", color: "rgba(190,220,240,0.75)", lineHeight: 1.85, marginBottom: "1.5rem" }}>
