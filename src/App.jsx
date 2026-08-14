@@ -91,27 +91,13 @@ function Hero({ onNav }) {
         <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#7ab3d4", marginBottom: "1.5rem", opacity: 0.9 }}>
           Composer · Lawrence University · Class of 2027
         </p>
-        <h1 style={{
-          fontFamily: "'Cormorant Garamond', serif",
-          fontSize: "clamp(3.5rem, 8vw, 7rem)",
-          fontWeight: 300,
-          lineHeight: 1.0,
-          color: "#ddeef8",
-          margin: "0 0 0.2em",
-          letterSpacing: "-0.02em",
-        }}>
-          Alexander
-        </h1>
-        <h1 style={{
-          fontFamily: "'Cormorant Garamond', serif",
-          fontSize: "clamp(3.5rem, 8vw, 7rem)",
-          fontWeight: 600,
-          lineHeight: 1.0,
-          color: "#7ab3d4",
-          margin: "0 0 2rem",
-          letterSpacing: "-0.02em",
-        }}>
-          Hu
+        <h1 style={{ margin: "0 0 2rem", fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(3.5rem, 8vw, 7rem)", lineHeight: 1.0, letterSpacing: "-0.02em" }}>
+          <span style={{ display: "block", fontWeight: 300, color: "#ddeef8", marginBottom: "0.2em" }}>
+            Alexander
+          </span>
+          <span style={{ display: "block", fontWeight: 600, color: "#7ab3d4" }}>
+            Hu
+          </span>
         </h1>
         <div style={{ display: "flex", gap: "1rem", marginTop: "0.5rem" }}>
           <button onClick={() => onNav("works")} style={{
@@ -391,7 +377,6 @@ export default function AlexanderHuSite() {
       minHeight: "100vh",
       color: "#ddeef8",
     }}>
-      <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
       <Nav active={activeNav} onNav={scrollTo} />
       <Hero onNav={scrollTo} />
       <About />
