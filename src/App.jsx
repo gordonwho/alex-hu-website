@@ -263,6 +263,35 @@ function Listen() {
 
 function Contact() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState(null);
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+
+  const updateField = (field, value) => setForm(f => ({ ...f, [field]: value }));
+
+  const submit = async () => {
+    setError(null);
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      setError("Please fill in your name, email, and a message.");
+      return;
+    }
+    setSending(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || "Something went wrong. Please try again.");
+      setSent(true);
+    } catch (err) {
+      setError(err.message || "Something went wrong. Please try again.");
+    } finally {
+      setSending(false);
+    }
+  };
+
   return (
     <section id="contact" style={{ position: "relative", overflow: "hidden", padding: "6rem 3rem", borderTop: "1px solid rgba(100,160,210,0.08)" }}>
       <div style={{
@@ -291,34 +320,48 @@ function Contact() {
           </div>
         ) : (
           <div style={{ display: "flex", flexDirection: "column", gap: "1.2rem" }}>
-            {["Name", "Email"].map(field => (
+            {[["Name", "name", "text"], ["Email", "email", "email"]].map(([label, field, type]) => (
               <div key={field}>
-                <label style={{ display: "block", fontFamily: "'DM Sans', sans-serif", fontSize: "0.72rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(150,190,215,0.6)", marginBottom: "8px" }}>{field}</label>
-                <input type={field === "Email" ? "email" : "text"} style={{
-                  width: "100%", boxSizing: "border-box", padding: "12px 16px",
-                  background: "transparent", border: "1px solid rgba(100,160,210,0.2)",
-                  color: "#ddeef8", fontFamily: "'DM Sans', sans-serif", fontSize: "0.95rem",
-                  outline: "none",
-                }} />
+                <label style={{ display: "block", fontFamily: "'DM Sans', sans-serif", fontSize: "0.72rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(150,190,215,0.6)", marginBottom: "8px" }}>{label}</label>
+                <input
+                  type={type}
+                  value={form[field]}
+                  onChange={e => updateField(field, e.target.value)}
+                  disabled={sending}
+                  style={{
+                    width: "100%", boxSizing: "border-box", padding: "12px 16px",
+                    background: "transparent", border: "1px solid rgba(100,160,210,0.2)",
+                    color: "#ddeef8", fontFamily: "'DM Sans', sans-serif", fontSize: "0.95rem",
+                    outline: "none",
+                  }} />
               </div>
             ))}
             <div>
               <label style={{ display: "block", fontFamily: "'DM Sans', sans-serif", fontSize: "0.72rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(150,190,215,0.6)", marginBottom: "8px" }}>Message</label>
-              <textarea rows={5} style={{
-                width: "100%", boxSizing: "border-box", padding: "12px 16px",
-                background: "transparent", border: "1px solid rgba(100,160,210,0.2)",
-                color: "#ddeef8", fontFamily: "'DM Sans', sans-serif", fontSize: "0.95rem",
-                outline: "none", resize: "vertical",
-              }} />
+              <textarea
+                rows={5}
+                value={form.message}
+                onChange={e => updateField("message", e.target.value)}
+                disabled={sending}
+                style={{
+                  width: "100%", boxSizing: "border-box", padding: "12px 16px",
+                  background: "transparent", border: "1px solid rgba(100,160,210,0.2)",
+                  color: "#ddeef8", fontFamily: "'DM Sans', sans-serif", fontSize: "0.95rem",
+                  outline: "none", resize: "vertical",
+                }} />
             </div>
-            <button onClick={() => setSent(true)} style={{
+            {error && (
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.85rem", color: "#e08a8a", margin: 0 }}>{error}</p>
+            )}
+            <button onClick={submit} disabled={sending} style={{
               alignSelf: "flex-start", padding: "14px 40px",
               fontFamily: "'DM Sans', sans-serif", fontSize: "0.82rem", letterSpacing: "0.12em", textTransform: "uppercase",
-              border: "1px solid #7ab3d4", background: "transparent", color: "#7ab3d4", cursor: "pointer", transition: "all 0.2s",
+              border: "1px solid #7ab3d4", background: "transparent", color: "#7ab3d4",
+              cursor: sending ? "default" : "pointer", opacity: sending ? 0.6 : 1, transition: "all 0.2s",
             }}
-              onMouseEnter={e => { e.target.style.background = "#7ab3d4"; e.target.style.color = "#0a121e"; }}
-              onMouseLeave={e => { e.target.style.background = "transparent"; e.target.style.color = "#7ab3d4"; }}
-            >Send Message</button>
+              onMouseEnter={e => { if (!sending) { e.target.style.background = "#7ab3d4"; e.target.style.color = "#0a121e"; } }}
+              onMouseLeave={e => { if (!sending) { e.target.style.background = "transparent"; e.target.style.color = "#7ab3d4"; } }}
+            >{sending ? "Sending…" : "Send Message"}</button>
           </div>
         )}
       </div>
