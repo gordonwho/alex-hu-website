@@ -42,10 +42,10 @@ function Nav({ active, onNav }) {
       borderBottom: scrolled ? "1px solid rgba(100,160,210,0.12)" : "none",
       transition: "all 0.4s ease",
     }}>
-      <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.3rem", fontWeight: 600, color: "#c8dff0", letterSpacing: "0.04em" }}>
+      <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.3rem", fontWeight: 600, color: "#c8dff0", letterSpacing: "0.04em", whiteSpace: "nowrap", flexShrink: 0 }}>
         A H
       </span>
-      <div className="nav-links" style={{ display: "flex", gap: "2.5rem" }}>
+      <div className="nav-links" style={{ display: "flex", gap: "2.5rem", flexShrink: 1, minWidth: 0 }}>
         {NAV_LINKS.map(link => (
           <button key={link} onClick={() => onNav(link.toLowerCase())} style={{
             background: "none", border: "none", cursor: "pointer",
