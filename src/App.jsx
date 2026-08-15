@@ -32,7 +32,7 @@ function Nav({ active, onNav }) {
   }, []);
 
   return (
-    <nav style={{
+    <nav className="site-nav" style={{
       position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
       padding: "0 3rem",
       height: "64px",
@@ -45,7 +45,7 @@ function Nav({ active, onNav }) {
       <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.3rem", fontWeight: 600, color: "#c8dff0", letterSpacing: "0.04em" }}>
         A H
       </span>
-      <div style={{ display: "flex", gap: "2.5rem" }}>
+      <div className="nav-links" style={{ display: "flex", gap: "2.5rem" }}>
         {NAV_LINKS.map(link => (
           <button key={link} onClick={() => onNav(link.toLowerCase())} style={{
             background: "none", border: "none", cursor: "pointer",
@@ -55,6 +55,7 @@ function Nav({ active, onNav }) {
             transition: "color 0.2s",
             padding: "4px 0",
             borderBottom: active === link.toLowerCase() ? "1px solid #7ab3d4" : "1px solid transparent",
+            whiteSpace: "nowrap",
           }}>{link}</button>
         ))}
       </div>
@@ -137,7 +138,7 @@ function About() {
         background: "linear-gradient(180deg, rgba(10,18,30,0.94) 0%, rgba(10,18,30,0.88) 40%, rgba(10,18,30,0.94) 100%)",
       }} />
       <div style={{ position: "relative", zIndex: 2, maxWidth: "1100px", margin: "0 auto" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: "6rem", alignItems: "start" }}>
+      <div className="about-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: "6rem", alignItems: "start" }}>
         <div>
           <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#7ab3d4", marginBottom: "1.2rem" }}>About</p>
           <div style={{ border: "1px solid rgba(122,179,212,0.25)", padding: "8px", background: "rgba(10,18,30,0.4)" }}>
@@ -194,6 +195,7 @@ function Works() {
         <div>
           {WORKS.map((work, i) => (
             <div key={work.title}
+              className="work-row"
               onMouseEnter={() => setHovered(i)}
               onMouseLeave={() => setHovered(null)}
               style={{
@@ -209,7 +211,7 @@ function Works() {
                 <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.35rem", fontWeight: 500, color: hovered === i ? "#7ab3d4" : "#ddeef8", margin: "0 0 6px", transition: "color 0.2s" }}>{work.title}</p>
                 <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.82rem", color: "rgba(180,210,230,0.6)", margin: 0, opacity: hovered === i ? 1 : 0.75, transition: "opacity 0.2s" }}>{work.instrumentation}</p>
               </div>
-              <div style={{ textAlign: "right" }}>
+              <div className="work-meta" style={{ textAlign: "right" }}>
                 <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.78rem", color: "rgba(150,190,215,0.7)", margin: "0 0 4px" }}>{work.year}</p>
                 <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", color: "rgba(120,170,200,0.5)", margin: 0 }}>{work.duration}</p>
               </div>

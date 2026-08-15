@@ -30,6 +30,50 @@
     <link rel="manifest" href="/manifest.json" />
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; overflow-x: hidden; }
+      img { max-width: 100%; }
+
+      @media (max-width: 780px) {
+        section, footer, nav.site-nav {
+          padding-left: 1.25rem !important;
+          padding-right: 1.25rem !important;
+        }
+        .about-grid {
+          grid-template-columns: 1fr !important;
+          gap: 2.5rem !important;
+        }
+        .about-grid > div:first-child {
+          max-width: 260px;
+        }
+        .work-row {
+          grid-template-columns: 1fr !important;
+          gap: 0.5rem !important;
+        }
+        .work-meta {
+          text-align: left !important;
+          display: flex !important;
+          gap: 0.75rem !important;
+        }
+        nav.site-nav .nav-links {
+          gap: 1.1rem !important;
+        }
+        nav.site-nav .nav-links button {
+          font-size: 0.68rem !important;
+        }
+      }
+
+      @media (max-width: 400px) {
+        nav.site-nav .nav-links {
+          gap: 0.7rem !important;
+        }
+        nav.site-nav .nav-links button {
+          font-size: 0.6rem !important;
+        }
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
